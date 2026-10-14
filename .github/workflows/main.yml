@@ -25,3 +25,12 @@ jobs:
 
       - name: Build
         run: dotnet build ./TrailsintheSky2ndChapter.slnx --configuration Release --no-restore
+  
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: MySolution-build
+          path: |
+            **/bin/Release/
+          if-no-files-found: error
+          retention-days: 14
